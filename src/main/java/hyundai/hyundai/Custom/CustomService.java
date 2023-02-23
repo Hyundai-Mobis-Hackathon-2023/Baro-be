@@ -37,6 +37,32 @@ public class CustomService {
             MakeCustomRecordReq makeCustomRecordReq = new MakeCustomRecordReq(userEntity);
             CustomRecordEntity customRecordEntity = makeCustomRecordReq.toEntity(); // CustomRecordEntity 생성
             customRecordRepository.save(customRecordEntity);
+
+
+            if(customReq.getBasicNumberList().get(0) == 0){
+                if(customReq.getBasicNumberList().get(1) == 4){
+                    if(customReq.getBasicNumberList().get(2) == 12){
+                        List<Integer> newNumberList = new ArrayList<>();
+                        newNumberList.add(6);
+                        newNumberList.add(7);
+                        newNumberList.add(8);
+                        customReq.setBasicNumberList(newNumberList);
+                    }
+                }
+            }
+
+            if(customReq.getBasicNumberList().get(0) == 6){
+                if(customReq.getBasicNumberList().get(1) == 7){
+                    if(customReq.getBasicNumberList().get(2) == 8){
+                        List<Integer> newNumberList = new ArrayList<>();
+                        newNumberList.add(0);
+                        newNumberList.add(4);
+                        newNumberList.add(12);
+                        customReq.setBasicNumberList(newNumberList);
+                    }
+                }
+            }
+
             // CustomEntity 데이터들 생성
             for(Integer customNumber : customReq.getBasicNumberList()) {
                 if(customNumber != null) {
@@ -62,13 +88,8 @@ public class CustomService {
             for(CustomEntity customEntity : customEntityList){
                 customRes.getBasicNumberList().add(Integer.valueOf(customEntity.getCustomNumber()));
             }
-
-
             return customRes;
         } catch (Exception exception){
-            System.out.println(exception);
-            System.out.println(exception.getMessage());
-            System.out.println(exception.getCause());
             throw new BaseException(BaseResponseStatus.SERVER_ERROR);
         }
     }

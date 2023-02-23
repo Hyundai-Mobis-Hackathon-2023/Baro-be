@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -14,5 +15,6 @@ import java.util.Set;
 public class CustomReq {
 
     @ApiModelProperty(example = "[1,null,3,null,5,6]")
-    private Set<Integer> basicNumberList;
+    private List<Integer> basicNumberList = new ArrayList<>();
+    // private Set<Integer> basicNumberList;
 }
