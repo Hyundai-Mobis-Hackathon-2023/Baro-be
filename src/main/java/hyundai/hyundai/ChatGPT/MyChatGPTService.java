@@ -95,7 +95,7 @@ public class MyChatGPTService {
         }
         String res = String.join(".", resultArr);
         String splitResult = res.replace(String.valueOf("null"), "");
-        String realSplitResult = splitResult.substring(0, splitResult.length() - 1);
+        String realSplitResult = splitResult.substring(0, splitResult.length());
         return realSplitResult;
     }
 }
